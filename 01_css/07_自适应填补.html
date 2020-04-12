@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>自适应填补</title>
+    <style>
+      .containter{
+        position: relative;
+        height: 300px;
+        background: red;
+      }
+      .child1{
+        height: 100px;
+        background: blue;
+      }
+
+      .child2{
+        position: absolute;
+        width: 100%;  
+        top: 100px;
+        left: 0;
+        bottom: 0;
+        background: gold;
+      }
+
+      .containter1{
+        display: flex;
+        flex-direction: column; /* 决定主轴方向（容器排列方向）*/
+        height: 300px;
+        background: red;
+      }
+
+      .child11{
+        width: 100%;
+        height: 100px;
+        background: blue;
+      }
+
+      .child21{
+        width: 100%;
+        flex: 1;
+        background: gold;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>
+      有一个高度固定的div，里面有两个div，一个高度100px，另一个填补剩下的高度
+    </h1>
+    <div class="containter">
+        <!-- 外层div使用position:relative;,要求高度自适用的div使用position:absolute; top:100px; bottom:0; left:0 -->
+      <div class="child1">child1</div>
+      <div class="child2">child2</div>
+    </div>
+      <br/>
+    <div class="containter1">
+        <!-- 使用flex布局方式，高度自适应的div使用flex:1-->
+      <div class="child11">child11</div>
+      <div class="child21">child21</div>
+    </div>
+  </body>
+</html>

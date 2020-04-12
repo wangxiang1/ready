@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>float高度塌陷</title>
+    <style>
+      .div1 {
+        width: 800px;
+        border: 1px solid black;
+      }
+
+      .div1::after {
+        /* 设置添加子元素的内容是空 */
+        content: "";
+        /* 设置添加子元素为块级元素 */
+        display: block;
+        /* 设置添加的子元素的高度0 */
+        height: 0;
+        /* 设置添加子元素看不见 */
+        visibility: hidden;
+        /* 设置clear：both */
+        clear: both;
+      }
+
+      .child {
+        width: 50px;
+        height: 50px;
+        background-color: aquamarine;
+        margin: 5px;
+        float: left;
+      }
+
+      .div2 {
+        width: 800px;
+        border: 1px solid black;
+        overflow: hidden;
+      }
+
+      .child2 {
+        width: 50px;
+        height: 50px;
+        background-color: aquamarine;
+        margin: 5px;
+        float: left;
+      }
+
+      .div3 {
+        width: 800px;
+        border: 1px solid black;
+      }
+
+      .child3 {
+        width: 50px;
+        height: 50px;
+        background-color: aquamarine;
+        margin: 5px;
+        float: left;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="div1">
+      通过伪类选择器清除浮动（关键方式）
+      <div class="child"></div>
+      <div class="child"></div>
+      <div class="child"></div>
+    </div>
+    <br />
+    <div class="div2">
+      父级元素添加overflow属性（原理是触发父元素BFC）
+      <div class="child2"></div>
+      <div class="child2"></div>
+      <div class="child2"></div>
+    </div>
+    <br />
+    <div class="div3">
+      添加额外标签
+      <div class="child3"></div>
+      <div class="child3"></div>
+      <div class="child3"></div>
+      <!-- 添加额外标签并且添加clear属性 -->
+      <div style="clear:both"></div>
+    </div>
+  </body>
+</html>

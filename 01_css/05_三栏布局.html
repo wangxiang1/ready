@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>三栏布局</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        display: flex;
+      }
+
+      .left {
+        flex-basis: 200px;
+        background-color: aquamarine;
+      }
+
+      .main {
+        flex: 1;
+        background-color: blueviolet;
+      }
+
+      .right {
+        flex-basis: 200px;
+        background-color: aquamarine;
+      }
+
+      .left1,
+      .right1 {
+        position: absolute;
+        top: 0;
+        background-color: red;
+      }
+
+      .left1 {
+        left: 0;
+        width: 200px;
+      }
+
+      .right1 {
+        right: 0;
+        width: 200px;
+      }
+
+      .main1 {
+        margin: 0 200px;
+        background-color: green;
+      }
+
+      .container2 {
+        border: 1px solid black;
+        padding: 10px;
+      }
+
+      .container2::after {
+        content: "";
+        display: block;
+        clear: both;
+      }
+
+      .left2 {
+        float: left;
+        width: 200px;
+        background-color: red;
+      }
+
+      .main2 {
+        margin: 0 200px;
+        background-color: blueviolet;
+      }
+
+      .right2 {
+        float: right;
+        width: 200px;
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <!--  <div class="container">
+      <div class="left">left</div>
+      <div class="main">main   flex</div>
+      <div class="right">right</div>
+  </div> -->
+
+    <!--  <div class="container1">
+      <div class="left1">left</div>
+      <div class="main1">main position + margin</div>
+      <div class="right1">right</div>
+    </div> -->
+
+    <div class="container2">
+      <div class="left2">left</div>
+      <div class="right2">right</div>
+      <div class="main2">
+        main float +
+        margineeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeerrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
+      </div>
+    </div>
+  </body>
+</html>

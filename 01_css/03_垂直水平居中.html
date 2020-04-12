@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>垂直水平居中</title>
+    <style>
+      .div1 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 800px;
+        height: 300px;
+        border: 1px solid black;
+      }
+
+      .div2 {
+        position: relative;
+        width: 800px;
+        height: 300px;
+        border: 1px solid black;
+      }
+
+      .div3 {
+        position: relative;
+        width: 800px;
+        height: 300px;
+        border: 1px solid black;
+      }
+
+      .div4 {
+        position: relative;
+        width: 800px;
+        height: 300px;
+        border: 1px solid black;
+      }
+
+      .child1 {
+        width: 200px;
+        height: 100px;
+        background-color: aquamarine;
+      }
+
+      .child2 {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        padding: 20px;
+        background-color: aquamarine;
+      }
+
+      .child3 {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin-left: -100px;
+        margin-top: -50px;
+        width: 200px;
+        height: 100px;
+        background-color: aquamarine;
+      }
+
+      .child4 {
+        position: absolute;
+        width: 200px;
+        height: 100px;
+        background-color: aquamarine;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="div1">
+      <div class="child1">
+        万能flex
+      </div>
+    </div>
+    <br />
+    <div class="div2">
+      <div class="child2">
+        position + transform （宽高未知）
+      </div>
+    </div>
+    <div class="div3">
+      <div class="child3">
+        position + margin （宽高确定）
+      </div>
+    </div>
+    <div class="div4">
+      <div class="child4">
+        绝对定位设置各个方向为0，通过`margin:auto`实现垂直水平居中（宽高已知）
+      </div>
+    </div>
+  </body>
+</html>

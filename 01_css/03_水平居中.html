@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>水平居中</title>
+    <style>
+      div {
+        border: 1px solid black;
+        margin: 10px;
+      }
+
+      .div1 {
+        width: 300px;
+        height: 100px;
+        text-align: center;
+      }
+
+      .div2 {
+        width: 500px;
+        height: 300px;
+      }
+
+      .div3 {
+        position: relative; /*生成相对定位的元素，相对于其正常位置进行定位。因此，"left:20" 会向元素的 LEFT 位置添加 20 像素。*/
+        width: 500px;
+        height: 300px;
+      }
+
+      .div4 {
+        width: 1000px;
+        height: 300px;
+      }
+
+      .div5 {
+        width: 1000px;
+        height: 300px;
+        text-align: center;
+      }
+
+      .div6 {
+        position: relative;
+        width: 1000px;
+        height: 300px;
+      }
+
+      .div7 {
+        width: 1000px;
+        height: 300px;
+        display: flex; /*元素会进入flex布局模式*/
+        justify-content: center; /*用于设置或检索弹性盒子元素在主轴（横轴）方向上的对齐方式*/
+      }
+
+      .child2 {
+        width: 100px;
+        height: 100px;
+        background-color: brown;
+        margin: 0 auto;
+      }
+
+      .child3 {
+        position: absolute; /*生成绝对定位的元素，相对于 static 定位以外的第一个父元素进行定位。*/
+        left: 50%; /* 距左50% */
+        width: 200px;
+        height: 100px;
+        margin-left: -100px; /*再向左移负的width/2*/
+        background-color: brown;
+      }
+
+      .child4 {
+        display: table; /*此元素会作为块级表格来显示（类似 <table>），表格前后带有换行符。*/
+        margin: 0 auto;
+        padding: 20px;
+        background-color: blue;
+      }
+
+      .child5 {
+        display: inline-block;
+        padding: 20px;
+        background-color: blue;
+      }
+
+      .child6 {
+        position: absolute;
+        left: 50%;
+        transform: translateX(
+          -50%
+        ); /*transform 属性向元素应用 2D 或 3D 转换。该属性允许我们对元素进行旋转、缩放、移动或倾斜*/
+        padding: 20px;
+        background-color: blue;
+      }
+
+      .child7 {
+        padding: 20px;
+        background-color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="div1">
+      <span>行内元素水平居中</span>
+    </div>
+
+    <div class="div2">
+      <div class="child2">
+        固定宽度，块元素水平居中 margin: 0 auto;
+      </div>
+    </div>
+
+    <div class="div3">
+      <div class="child3">
+        固定宽度，块元素水平居中 绝对定位 + margin-left：负宽度/2
+        （前提父元素设置相对定位）
+      </div>
+    </div>
+
+    <div class="div4">
+      <div class="child4">
+        宽度未知，display:table + margin左右auto
+      </div>
+    </div>
+
+    <div class="div5">
+      <div class="child5">
+        宽度未知，display:inline-block + text-align:center
+      </div>
+    </div>
+
+    <div class="div6">
+      <div class="child6">
+        绝对定位 + transform
+      </div>
+    </div>
+
+    <div class="div7">
+      <div class="child7">
+         万能flex布局
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>盒子模型</title>
+  <style>
+    div{
+      width: 300px;
+      height: 200px;
+      padding: 20px;
+      margin: 20px;
+      background-color: aquamarine;
+    }
+
+    .div1{
+      border: 10px solid rebeccapurple;
+      box-sizing: content-box;  /* 标准盒模型 */
+    }
+
+    .div2{
+      border: 10px solid rgb(86, 226, 20);
+      box-sizing: border-box; /* 怪异盒模型 */
+    }
+
+    .div3{
+      height: auto;
+    }
+
+    h1::after{
+      content: 'content css'
+    }
+
+    .div3::after{
+      content: 'hfoewhsfiowej'
+    }
+  </style>
+</head>
+<body>
+  <div class="div1">
+      W3C盒模型（标准盒模型）
+      <br />
+      width = content
+      <br />
+      一个块的宽度 = width + padding + border + margin
+  </div>
+
+  <div class="div2">
+      IE盒模型（怪异盒模型）
+      <br />
+      width = border + padding + margin
+      <br />
+      一个块的宽度 = width + margin
+  </div>
+
+  <div class="div3">
+    <p>
+        content这个属性经常被忽略，它顾名思义就是内容了，对于div等非替换元素来看，其content就是div内部的元素。而对于替换元素，其content就是可替换的部分
+    </p>
+    <p>content 常在伪元素中出现,作用是在css中直接生成可在网页中显示的内容</p>
+    <h1>
+      12333333
+    </h1>
+  </div>
+</body>
+</html>
