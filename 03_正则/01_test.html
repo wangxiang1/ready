@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>正则</title>
+</head>
+<body>
+  <script>
+    var reg = /^[\d\s]+$/;
+    var str = '1020 ';
+    console.log(reg.test(str));
+    // console.log(str.match(reg));
+
+    const str1 = "http://www.baidu123.com";
+
+    console.log(str1.match(/^https?:\/\/www(\.\w+).\w+$/gi))
+    console.log(/^https?:\/\/www(\.\w+)+$/gi.exec(str1));
+
+    let str3 = `<h1>edsafad</h1>`
+    console.log(str3.match(/^<(h[1-6])>[\s\S]*<\/\1>/gi));
+  </script>
+</body>
+</html>

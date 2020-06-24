@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>防抖和节流</title>
+    <style>
+      .content {
+        width: 500px;
+        height: 300px;
+        margin: 0 auto;
+        background-color: grey;
+        font-size: 50px;
+        text-align: center;
+        color: white;
+        line-height: 300px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 防抖：当持续发生事件时，一段时间内没有再次触发事件，时间处理函数才执行一次；若在这段时间内，又触发事件，则重新计时。 -->
+    <div class="content" id="debounce">0</div>
+    <br />
+    <!-- 节流：当持续发生事件时，一段时间内只调用一次处理函数 -->
+    <div class="content" id="throttle">0</div>
+    <script>
+      window.onload = function() {
+        var count = 0;
+        const dom = document.querySelector("#debounce");
+        dom.addEventListener("mouseover", debounce(function() {
+          count++;
+          dom.textContent = count;
+        }));
+
+        var count1 = 0;
+        const dom1 = document.querySelector("#throttle");
+        dom1.addEventListener("mouseover", throttle(function() {
+          count1++;
+          dom1.textContent = count1;
+        }));
+      };
+
+
+      // 防抖函数
+      function debounce(handle) {
+        var timer = null; // 创建一个标记用来存放定时器
+
+        return function () {
+          clearTimeout(timer); // 每次调用函数的时候，把定时器清空
+
+          timer = setTimeout(() => {
+            handle(this, arguments);
+          }, 1000); // 1s后触发，期间如果再次调用函数，则清除上一个定时器，重新计时。
+        }
+      }
+
+      // 节流函数
+      function throttle(handle) {
+        var canRun = true; // 标记，用来标记是否能执行函数
+
+        return function () {
+          if(!canRun) return // 默认为true，如果是false 则不能调用函数
+          
+          canRun = false; // 设置 标记为false
+          setTimeout(() => {
+            handle(this, arguments);
+            canRun = true; // setTimeout执行完毕，标记改为true，即表示可以执行下一次了；如果定时器没有执行，则标记永远都是false，会在开头被return
+          }, 1000);
+        }
+      }
+    </script>
+  </body>
+</html>

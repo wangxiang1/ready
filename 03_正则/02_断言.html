@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="select">
+      我的断言测试用例，断言教程在这里啊。
+    </div>
+    <div id="select2">
+      <a href="https://baidu.com">baidu</a>
+      <a href="https://baidu1.com">baidu1</a>
+    </div>
+    <script>
+      // const str2 = "get1_install2_app3_list4_by5_anenf6_fisd"
+      // console.log(str2.match(/(\d*)_/g));
+      // console.log(str2.replace(/(\d*)_/g, (match, p1) => p1 % 2 === 0 ? '' : p1));
+      // console.log(Array.from(new Array(1000), (x, i) => i) );
+
+      const dom = document.querySelector("#select");
+      // 给'后边'是'教程'的断言加链接
+      const reg = /断言(?=教程)/g;
+      dom.innerHTML = dom.innerHTML.replace(reg, `<a href="https://www.baidu.com">$&</a>`);
+
+      // 元前面的数据加上 .00 
+      let lession = `
+        去去去，100元，100次，
+        我的，400元，200次，
+        发我，20.00元，30次，
+      `
+      const reg1 = /(\d+)(.00)?(?=元)/g;
+      const lession2 = lession.replace(reg1, (v, ...args) => {
+        args[1] = args[1] || '.00';
+        // splice 向数组中添加或删除项目，返回被删除的项目
+        // splice(index, howmany, item1,...,itemX)
+        // index: 添加\删除项目的位置，howmany：要删除的项目数量 item：需要向数组添加的新项目
+        return args.splice(0,2).join('');
+      })
+      console.log(lession2);
+
+      // 将链接全部替换为 wangxiang
+      const dom2 = document.querySelector("#select2")
+      // 前面是href=' | "
+      const reg3 = /(?<=href=(['"])).+(?=\1)/ig;
+      dom2.innerHTML = dom2.innerHTML.replace(reg3, 'https://wangxiang.com')
+
+      // 电话号码后四位改为*号
+      const str4 = `
+        王响： 18513573379，
+        晴天： 18618214908
+      `
+      const reg4 = /(?<=\d{7})\d{4}/g
+      console.log(str4.replace(reg4, '****'));
+    </script>
+  </body>
+</html>
+  
