@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 默认绑定
+      // function foo() {
+      //   console.log(this.a);
+      // }
+
+      // var a = 2;
+
+      // foo();
+
+      // 隐式绑定
+      // function foo1() {
+      //   console.log(this.a);
+      // }
+
+      // var obj1 = {
+      //   a: 3,
+      //   foo1: foo1
+      // }
+
+      // var obj2 = {
+      //   a: 23,
+      //   obj1: obj1
+      // }
+      
+
+      // obj2.obj1.foo1(); // 对象属性引用链中只有一层或者说最后一层在调用位置生效
+
+      // // 隐式丢失
+      // function foo2() {
+      //   console.log(this.a);
+      // }
+
+      // var obj3 = {
+      //   a: 222,
+      //   foo: foo2
+      // }
+
+      // var bar = obj3.foo; // 函数别名
+      // var a = 'oops, global' // a 是全局对象
+      // bar(); // oops, global
+
+      // // 调用回调函数 会造成this丢失
+      // setTimeout(obj3.foo, 100)
+
+      // 显示绑定
+      // function foo() {
+      //   console.log(this.a);
+      // }
+      // var obj = { a: 2 };
+      
+      // foo.call(obj);
+
+      // // 硬绑定
+      // var bar = function() {
+      //   foo.call(obj)
+      // }
+
+      // bar();
+      // setTimeout(bar, 100)
+      // bar.call(window) // 硬绑定的bar不可能修改它的this
+
+      // new绑定
+      function foo(a) {
+        this.a = a;
+      }
+
+      var bar = new foo(2)
+      console.log(bar.a);
+
+    </script>
+  </body>
+</html>
