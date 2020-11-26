@@ -24,7 +24,7 @@ const node = new TreeNode(1);
  * 按照实现方式不同，比遍历方式分为两种：
  * 1、递归遍历（先、中、后序遍历）
  * 2、迭代遍历（层次遍历）
- *  */
+ */
  const nodeA = new TreeNode('A');
  const nodeB = new TreeNode('B');
  const nodeC = new TreeNode('C');

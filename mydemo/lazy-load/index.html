@@ -1,0 +1,88 @@
+<!--
+ * @Author: wangxiang
+ * @Date: 2020-11-20 10:44:56
+ * @LastEditTime: 2020-11-20 16:34:08
+ * @LastEditors: wangxiang
+ * @Description: 懒加载-demo
+ * @FilePath: \ready\mydemo\lazy-load\index.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>懒加载 lazy-load</title>
+    <style>
+      .img {
+        width: 250px;
+        height: 250px;
+        background-color: gray;
+        margin: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="img">
+        <!-- 注意并没有引入真实的src -->
+        <img class="pic" data-src="./images/1.png" alt="加载中" />
+      </div>
+      <div class="img">
+        <img class="pic" data-src="./images/2.png" alt="加载中" />
+      </div>
+      <div class="img">
+        <img class="pic" data-src="./images/3.png" alt="加载中" />
+      </div>
+      <div class="img">
+        <img class="pic" data-src="./images/1.png" alt="加载中" />
+      </div>
+      <div class="img">
+        <img class="pic" data-src="./images/2.png" alt="加载中" />
+      </div>
+      <div class="img">
+        <img class="pic" data-src="./images/3.png" alt="加载中" />
+      </div>
+      <div class="img">
+        <img class="pic" data-src="./images/1.png" alt="加载中" />
+      </div>
+      <div class="img">
+        <img class="pic" data-src="./images/2.png" alt="加载中" />
+      </div>
+      <div class="img">
+        <img class="pic" data-src="./images/3.png" alt="加载中" />
+      </div>
+    </div>
+    <script>
+      // 获取所有图片标签
+      const imgs = document.getElementsByTagName("img");
+      // 获取可视区域的高度
+      const viewHeight =
+        window.innerHeight || document.documentElement.clientHeight;
+      // num用来统计当前显示到哪一张图片了，避免每次都从第一张图片开始检查
+      let num = 0;
+      function lazyload() {
+        for (let i = num; i < imgs.length; i++) {
+          const img = imgs[i];
+          // 可视区域高度  -  元素距离顶部的距离
+          // getBoundingClientRect获取元素位置
+          // getBoundingClientRect用于获得页面中某个元素的左，上，右和下分别相对浏览器视窗的位置。
+          // getBoundingClientRect是DOM元素到浏览器可视范围的距离（不包含文档卷起的部分）。
+          // 该函数返回一个Object对象，该对象有6个属性：top,lef,right,bottom,width,height；
+          // 这里的top、left和css中的理解很相似，width、height是元素自身的宽高，但是right，bottom和css中的理解有点不一样。right是指元素右边界距窗口最左边的距离，bottom是指元素下边界距窗口最上面的距离。
+          let distance = viewHeight - img.getBoundingClientRect().top;
+          if (distance > 0) {
+            img.src = img.getAttribute("data-src");
+            // 前i张图片已经加载完毕，下次从第i+1张开始检查是否露出
+            num = i + 1;
+          }
+        }
+      }
+
+      lazyload();
+
+      // 监听滚动事件(待优化，可做防抖和节流)
+      window.addEventListener("scroll", lazyload);
+    </script>
+  </body>
+</html>

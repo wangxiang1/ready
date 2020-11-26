@@ -39,6 +39,10 @@
           count1++;
           dom1.textContent = count1;
         }));
+        // dom1.addEventListener("mouseover", throttle2(function() {
+        //   count1++;
+        //   dom1.textContent = count1;
+        // }, 5000));
       };
 
 
@@ -67,6 +71,18 @@
             handle(this, arguments);
             canRun = true; // setTimeout执行完毕，标记改为true，即表示可以执行下一次了；如果定时器没有执行，则标记永远都是false，会在开头被return
           }, 1000);
+        }
+      }
+
+      // 时间戳实现
+      function throttle2(fn, interval){
+        let last = 0; // 最近一次调用的时间
+        return function () {
+          let now = +new Date(); // 本地触发时间
+          if(now - last >= interval){ // 当本次触发时间-上次触发时间  大于 或者 等于  时间间隔
+            last = now; // 更新最近一次调用时间位now
+            fn.apply(this, arguments);
+          }
         }
       }
     </script>
