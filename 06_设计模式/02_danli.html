@@ -1,0 +1,45 @@
+<!--
+ * @Author: wangxiang
+ * @Date: 2020-12-15 10:26:55
+ * @LastEditTime: 2020-12-15 10:27:48
+ * @LastEditors: wangxiang
+ * @Description: 单例模式
+ * @FilePath: \ready\06_设计模式\02_danli.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>单例模式</title>
+  </head>
+  <body>
+    ddddddddddddd
+    <script>
+      function StorageBase() {}
+      StorageBase.prototype.getItem = function(key) {
+        return localStorage.getItem(key);
+      };
+      StorageBase.prototype.setItem = function(key, value) {
+        return localStorage.setItem(key, value);
+      };
+
+      const Storage1 = (function() {
+        let instance = null;
+
+        return function() {
+          if (!instance) {
+            instance = new StorageBase();
+          }
+          return instance;
+        };
+      })();
+
+      const con1 = new Storage1();
+      const con2 = new Storage1();
+      con1.setItem("name", "wangxiang");
+      console.log(con1.getItem("name"), con2.getItem("name"));
+    </script>
+  </body>
+</html>
