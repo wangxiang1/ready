@@ -1,0 +1,73 @@
+<!--
+ * @Author: wangxiang
+ * @Date: 2020-12-17 14:22:33
+ * @LastEditTime: 2020-12-17 14:47:15
+ * @LastEditors: wangxiang
+ * @Description: 预加载
+ * @FilePath: \ready\06_设计模式\05daili_Preloading.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>预加载</title>
+  </head>
+  <body>
+    <div class="myImgs">
+      <img
+        alt="pic1"
+        data-src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1369511624,462595697&fm=26&gp=0.jpg"
+      />
+      <br />
+      <img
+        alt="pic2"
+        data-src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1926976273,1612334744&fm=26&gp=0.jpg"
+      />
+      <br />
+      <img
+        alt="pic3"
+        data-src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3482128345,2137456532&fm=26&gp=0.jpg"
+      />
+      <br />
+      <img
+        alt="pic4"
+        data-src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3302399998,3216746631&fm=26&gp=0.jpg"
+      />
+      <br />
+      <img
+        alt="pic5"
+        data-src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1652123795,1945063222&fm=26&gp=0.jpg"
+      />
+      <br />
+    </div>
+    <script>
+      function PreLoadImage(imgNode) {
+        this.imgNode = imgNode
+      }
+      PreLoadImage.prototype.setUrl = function(imgUrl) {
+        this.imgNode.src = imgUrl
+      };
+
+      function ProxyImg(targetImage) {
+        this.targetImage = targetImage
+      }
+
+      ProxyImg.prototype.setUrl = function (targetUrl) {
+        const vitualImage = new Image()
+        vitualImage.onload = () => {
+          this.targetImage.setUrl(targetUrl)
+        }
+        vitualImage.src = targetUrl
+      }
+
+      const imgs = document.getElementsByTagName('img')
+      for (let i = 0; i < imgs.length; i++) {
+        const element = imgs[i];
+        const image = new ProxyImg(new PreLoadImage(element))
+        image.setUrl(element.getAttribute('data-src'))
+      }
+    </script>
+  </body>
+</html>
