@@ -1,0 +1,214 @@
+<!--
+ * @Author: wangxiang
+ * @Date: 2021-02-27 10:30:27
+ * @LastEditTime: 2021-02-27 13:16:38
+ * @LastEditors: wangxiang
+ * @Description: 图片旋转动画
+ * @FilePath: \ready\01_css\demo\01_图片旋转动画.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>图片旋转动画</title>
+    <style>
+      body {
+        background-image: url("./img/background.png");
+      }
+      .containter {
+        position: absolute;
+        left: 10px;
+        top: 10px;
+      }
+      .containter2 {
+        position: absolute;
+        left: 200px;
+        top: 10px;
+      }
+      .containter3 {
+        position: absolute;
+        left: 400px;
+        top: 10px;
+      }
+      .huan-bg1 {
+        position: absolute;
+        width: 148px;
+        height: 148px;
+        background-image: url("./img/huan1.png");
+        background-repeat: no-repeat;
+        background-size: 100%;
+        -webkit-transition-property: -webkit-transform;
+        -webkit-transition-duration: 1s;
+        -moz-transition-property: -moz-transform;
+        -moz-transition-duration: 1s;
+        -webkit-animation: rotate1 8s linear infinite;
+        -moz-animation: rotate1 8s linear infinite;
+        -o-animation: rorotate1 8s linear infinite;
+        animation: rotate1 8s linear infinite;
+      }
+      .huan-bg2 {
+        position: absolute;
+        width: 148px;
+        height: 148px;
+        background-image: url("./img/huan2.png");
+        background-repeat: no-repeat;
+        background-size: 100%;
+        -webkit-transition-property: -webkit-transform;
+        -webkit-transition-duration: 1s;
+        -moz-transition-property: -moz-transform;
+        -moz-transition-duration: 1s;
+        -webkit-animation: rotate2 5s linear infinite;
+        -moz-animation: rotate2 5s linear infinite;
+        -o-animation: rotate2 5s linear infinite;
+        animation: rotate2 5s linear infinite;
+      }
+      .outer-bg {
+        position: absolute;
+        top: 3px;
+        left: 3px;
+        width: 142px;
+        height: 142px;
+        background-image: url("./img/outerbg.png");
+        background-repeat: no-repeat;
+        background-size: 100%;
+      }
+      .inner-bg {
+        position: absolute;
+        left: 15px;
+        top: 15px;
+        width: 118px;
+        height: 118px;
+        background-image: url("./img/innerbg.png");
+        background-repeat: no-repeat;
+        background-size: 100%;
+        -webkit-transition-property: -webkit-transform;
+        -webkit-transition-duration: 1s;
+        -moz-transition-property: -moz-transform;
+        -moz-transition-duration: 1s;
+        -webkit-animation: rotate 20s linear infinite;
+        -moz-animation: rotate 20s linear infinite;
+        -o-animation: rotate 20s linear infinite;
+        animation: rotate 20s linear infinite;
+      }
+      @-webkit-keyframes rotate {
+        from {
+          -webkit-transform: rotate(0deg);
+        }
+        to {
+          -webkit-transform: rotate(360deg);
+        }
+      }
+      @-moz-keyframes rotate {
+        from {
+          -moz-transform: rotate(0deg);
+        }
+        to {
+          -moz-transform: rotate(359deg);
+        }
+      }
+      @-o-keyframes rotate {
+        from {
+          -o-transform: rotate(0deg);
+        }
+        to {
+          -o-transform: rotate(359deg);
+        }
+      }
+      @keyframes rotate {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(359deg);
+        }
+      }
+      @-webkit-keyframes rotate1 {
+        from {
+          transform: rotate(359deg);
+        }
+        to {
+          transform: rotate(0deg);
+        }
+      }
+      @-moz-keyframes rotate1 {
+        from {
+          transform: rotate(359deg);
+        }
+        to {
+          transform: rotate(0deg);
+        }
+      }
+      @-o-keyframes rotate1 {
+        from {
+          transform: rotate(359deg);
+        }
+        to {
+          transform: rotate(0deg);
+        }
+      }
+      @keyframes rotate1 {
+        from {
+          transform: rotate(359deg);
+        }
+        to {
+          transform: rotate(0deg);
+        }
+      }
+
+      @-webkit-keyframes rotate2 {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      @-moz-keyframes rotate2 {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      @-o-keyframes rotate2 {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes rotate2 {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="containter">
+      <div class="huan-bg1"></div>
+      <div class="huan-bg2"></div>
+      <div class="outer-bg"></div>
+      <div class="inner-bg"></div>
+    </div>
+    <div class="containter2">
+      <div class="huan-bg1"></div>
+      <div class="huan-bg2"></div>
+      <div class="outer-bg"></div>
+      <div class="inner-bg"></div>
+    </div>
+    <div class="containter3">
+      <div class="huan-bg1"></div>
+      <div class="huan-bg2"></div>
+      <div class="outer-bg"></div>
+      <div class="inner-bg"></div>
+    </div>
+  </body>
+</html>

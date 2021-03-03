@@ -17,13 +17,13 @@
 // }
 
 // 立即执行函数
-// for (var i = 0; i < 6; i++) {
-//   (function(j) {
-//     setTimeout(function timer(){
-//       console.log(j);
-//     }, j*1000)
-//   })(j);
-// }
+for (var i = 0; i < 6; i++) {
+  (function(j) {
+    setTimeout(function timer(){
+      console.log(j);
+    }, j*1000)
+  })(i);
+}
 
 // 块作用域
 // for (var i = 0; i < 6; i++) {
